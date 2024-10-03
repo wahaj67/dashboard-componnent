@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSelectedStatus,setCurrentPage } from "@/redux/slice";
+import { setSelectedStatus, setCurrentPage } from "@/redux/slice";
 
-export default function CardComponent() {
+export default function OrderOverview() {
   const dispatch = useDispatch();
-  const [selectedCard, setSelectedCard] = useState("request");
+  const [selectedCard, setSelectedCard] = useState("in-transit");
 
   useEffect(() => {
     console.log("useEffect triggered, calling dispatch with:", selectedCard);
@@ -19,43 +19,68 @@ export default function CardComponent() {
 
   const orders = [
     {
-      title: "Order Request",
-      value: 120,
-      unit: "/order",
-      description: "Total number of requests from Stores",
+      title: "Order Requests",
+      value: 146,
+      unit: "Total",
+      description: "Total no of request from Stores",
       status: "in-transit",
     },
     {
       title: "Order In Process",
-      value: 1340,
-      unit: "/order",
-      description: "Number of orders in shipping and packing",
+      value: 198,
+      unit: "Order",
+      description: "No. of order are in ship and pack",
       status: "in-process",
     },
     {
       title: "Order Delivered",
-      value: 3543,
-      unit: "/delivered",
-      description: "Total number of orders delivered",
+      value: 649,
+      unit: "Delivered",
+      description: "Total no of order delivered",
       status: "completed",
     },
   ];
 
   return (
-    <div className="bg-gray-50 h-[30%] w-[75%]  rounded-3xl mt-2 mx-auto p-4 sm:p-8 ">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto justify-between">
+    <div className="bg-white  mt-12 h-[230px] w-[65%]  mx-auto  overflow-x-hidden p-6 rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold mb-4">Overview</h2>
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {orders.map((order) => (
           <div
             key={order.status}
             onClick={() => handleClick(order.status)}
-            className={`bg-white shadow-md rounded-lg p-6 cursor-pointer transition-all hover:scale-105 ${
-              selectedCard === order.status ? "bg-green-700 text-white " : ""
+            className={`bg-white border rounded-lg p-4 cursor-pointer transition-all hover:scale-105 ${
+              selectedCard === order.status ? "bg-[green]" : ""
             }`}
           >
-            <h3 className="text-lg font-semibold">{order.title}</h3>
-            <p className="text-2xl">{order.value}</p>
-            <p>{order.unit}</p>
-            <p className="text-sm text-gray-600">{order.description}</p>
+            <div className="flex justify-between items-start mb-2">
+              <h3
+                className={`text-sm font-medium text-gray-500 ${
+                  selectedCard === order.status ? "text-white" : ""
+                }`}
+              >
+                {order.title}
+              </h3>
+              <span
+                className={`text-xs font-medium px-2 py-1 rounded-full bg-green-100 text-green-800  `}
+              >
+                {order.unit}
+              </span>
+            </div>
+            <p
+              className={`text-2xl font-bold mb-1 ${
+                selectedCard === order.status ? "text-white" : ""
+              }`}
+            >
+              {order.value}
+            </p>
+            <p
+              className={`text-xs text-gray-500 ${
+                selectedCard === order.status ? "text-white" : ""
+              }`}
+            >
+              {order.description}
+            </p>
           </div>
         ))}
       </div>

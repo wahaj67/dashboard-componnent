@@ -49,9 +49,14 @@ export default function OrderOverview() {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-white rounded-lg  w-[75%] shadow">
+    <div className="container mx-auto p-4 bg-white rounded-lg   w-[65%] mt-10 shadow">
       <div className="overflow-x-auto">
-        {loading && <div> Loading...</div>}
+        {loading &&  
+<div class="flex flex-row gap-2">
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+</div>}
         {/* {error && <div>{error}</div>} */}
         <Table>
           <TableHeader>
@@ -68,7 +73,7 @@ export default function OrderOverview() {
             {orders && orders.length > 1 ? (
               orders.map((order) => (
                 <TableRow key={order.id}>
-                  <TableCell>{order.id}</TableCell>
+                  <TableCell className="">{order.id}</TableCell>
                   <TableCell>{order.created_at}</TableCell>
                   {/* <TableCell>{order.store_name}</TableCell> */}
                   <TableCell>{order.shipping_cost}</TableCell>
