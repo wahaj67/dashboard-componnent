@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { fetching, setCurrentPage } from "@/redux/slice";
 
-export default function OrderOverview() {
+export default function Overview() {
   const dispatch = useDispatch();
   const {
     userData: orders,
@@ -49,7 +49,7 @@ export default function OrderOverview() {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-white rounded-lg   w-[65%] mt-10 shadow">
+    <div className="container mx-auto p-4 bg-white rounded-lg  3xl:w-[85%]  w-[85%] mt-10 shadow">
       <div className="overflow-x-auto">
         {loading &&  
 <div class="flex flex-row gap-2">

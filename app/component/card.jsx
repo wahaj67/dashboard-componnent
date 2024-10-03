@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSelectedStatus, setCurrentPage } from "@/redux/slice";
+import Overview from "./overview";
 
 export default function OrderOverview() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export default function OrderOverview() {
   ];
 
   return (
-    <div className="bg-white  mt-12 h-[230px] w-[65%]  mx-auto  overflow-x-hidden p-6 rounded-lg shadow-md">
+    <div className="bg-white   h-[250px] w-[75%]  mx-auto  overflow-x-hidden p-6 rounded-lg shadow-md">
       <h2 className="text-xl font-semibold mb-4">Overview</h2>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {orders.map((order) => (
@@ -50,7 +51,7 @@ export default function OrderOverview() {
             key={order.status}
             onClick={() => handleClick(order.status)}
             className={`bg-white border rounded-lg p-4 cursor-pointer transition-all hover:scale-105 ${
-              selectedCard === order.status ? "bg-[green]" : ""
+              selectedCard === order.status ? "bg-green-500" : ""
             }`}
           >
             <div className="flex justify-between items-start mb-2">
@@ -84,6 +85,10 @@ export default function OrderOverview() {
           </div>
         ))}
       </div>
+
+      
     </div>
+
+
   );
 }
