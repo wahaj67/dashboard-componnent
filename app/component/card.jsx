@@ -43,7 +43,7 @@ export default function OrderOverview() {
   ];
 
   return (
-    <div className="bg-white rounded-lg p-6 shadow-md max-w-7xl mx-auto">
+    <div className="bg-white rounded-lg p-6 shadow-md w-full ">
       <h2 className="text-xl font-semibold mb-4">Overview</h2>
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {orders.map((order) => (

@@ -17,7 +17,7 @@ export default function NavbarComponent() {
       </div>
       <div className="flex items-center space-x-4 ml-4">
         <div className="relative">
-          <Bell className="w-7 h-7 bg-green-600 shadow-md rounded-full text-white" />
+          <Image src='/Group 279.png' alt="bell" width={39} height={39}/>
           <span className="absolute top-0 right-0 inline-flex items-center justify-center w-3 h-3  rounded-full">
             <span className="sr-only">Notifications</span>
           </span>
@@ -30,8 +30,9 @@ export default function NavbarComponent() {
             height={32}
             className="rounded-full"
           />
-          <span className="text-sm font-medium text-gray-700 hidden sm:inline-block">
+          <span className="text-sm font-Poppins font-medium text-gray-700 hidden sm:inline-block">
             Rayford Chenail
+            <p className="text-xs  text-gray-500 font-extralight">rayfordchenail@mail.com</p>
           </span>
         </div>
       </div>

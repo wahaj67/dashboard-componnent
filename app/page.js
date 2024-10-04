@@ -17,12 +17,12 @@ export default function Home() {
           </div>
           <div className="flex flex-col w-full">
             <NavbarComponent />
-            <div className="flex lg:flex-row flex-col ">
-              <div className="flex-1 p-6 bg-gray-100  ">
+            <div className="flex lg:flex-row flex-col ml-4 ">
+              <div className="flex-1 p-6 bg-gray-100 rounded-lg  ">
                 <OrderOverview />
                 <Overview />
               </div>
-              <div className="bg-gray-100">
+              <div className="bg-gray-100 ">
               
                 <InventoryOverview />
                 <Tickets />

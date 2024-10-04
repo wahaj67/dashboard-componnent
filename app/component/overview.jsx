@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Edit2, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Edit2, Search, SearchCheckIcon, SearchCode, Trash2 } from "lucide-react";
+import { Button, Input } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { useDispatch, useSelector } from "react-redux";
 import { fetching, setCurrentPage } from "@/redux/slice";
+
 
 export default function Overview() {
   const dispatch = useDispatch();
@@ -62,6 +63,11 @@ export default function Overview() {
         )}
 
         <div className="min-h-[300px] md:min-h-[300px] lg:min-h-[400px]">
+          <div>
+          <h1 className="text-2xl sm:text-xl font-bold mt-2 ">Order Overview </h1>
+          
+          
+          </div>
           <Table>
             <TableHeader>
               <TableRow>
@@ -85,7 +91,7 @@ export default function Overview() {
                     <TableCell className="text-sm ">
                       {order.shipping_cost}
                     </TableCell>
-                    <TableCell className="text-sm">
+                    <TableCell className="text-sm ">
                       {order.order_status}
                     </TableCell>
                     <TableCell className="text-right">

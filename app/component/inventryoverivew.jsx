@@ -1,15 +1,25 @@
-import { Package, PackageX, AlertCircle } from "lucide-react";
+import Image from "next/image";
 
 const inventoryItems = [
-  { icon: Package, title: "Low Stock", items: 18, percentage: 0.01 },
-  { icon: PackageX, title: "Out Of Stock", items: 9, percentage: 0.01 },
-  { icon: AlertCircle, title: "Short Expire", items: 3, percentage: 0.01 },
+  { icon: "/Group 33619.png", title: "Low Stock", items: 18, percentage: 0.01 },
+  {
+    icon: "/Group 33619 (1).png",
+    title: "Out Of Stock",
+    items: 9,
+    percentage: 0.01,
+  },
+  {
+    icon: "/Group 33619 (2).png",
+    title: "Short Expire",
+    items: 3,
+    percentage: 0.01,
+  },
 ];
 
 export default function InventoryOverview() {
   return (
-    <div className="w-full p-6  ">
-      <div className="bg-white   rounded-lg shadow-lg overflow-hidden">
+    <div className="w-78  p-4">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">
             Inventory Overview
@@ -17,8 +27,13 @@ export default function InventoryOverview() {
           <div className="space-y-6">
             {inventoryItems.map((item, index) => (
               <div key={index} className="flex items-center space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <item.icon className="w-6 h-6 text-green-600" />
+                <div className="flex-shrink-0 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={40}
+                    height={40}
+                  />
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between items-center">
@@ -34,20 +49,6 @@ export default function InventoryOverview() {
                       All stock items that are {item.title.toLowerCase()}
                     </div>
                     <span className="text-sm text-red-500 flex items-center">
-                      <svg
-                        className="w-3 h-3 mr-1 transform rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
                       {item.percentage.toFixed(2)}%
                     </span>
                   </div>

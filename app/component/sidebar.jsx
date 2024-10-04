@@ -58,18 +58,18 @@ export default function SideBar() {
       </button>
 
       <div
-        className={`fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${
+        className={`fixed inset-y-0 left-0 z-40 w-52 bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:static lg:inset-auto`}
       >
         <div className="flex flex-col min-h-screen">
-          <div className="p-4 border-b border-gray-200 bg-gray-50 shadow-sm">
+          <div className="p-4 border-b border-gray-200 bg-gray-50 shadow-lg mt-10">
             <Image src="/logo animate.png" alt="Logo" width={178} height={38} />
           </div>
           <nav className="flex-1 overflow-y-auto">
             <ul className="py-4">
               {menuItems.map((item) => (
-                <li key={item.label} className="px-4 py-2">
+                <li key={item.label} className="px-4 py-4 shadow-md ">
                   {item.subItems ? (
                     <div>
                       <button
