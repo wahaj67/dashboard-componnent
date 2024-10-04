@@ -17,8 +17,8 @@ export default function NavbarComponent() {
       </div>
       <div className="flex items-center space-x-4 ml-4">
         <div className="relative">
-          <Bell className="w-6 h-6 text-gray-600" />
-          <span className="absolute top-0 right-0 inline-flex items-center justify-center w-3 h-3 bg-red-500 rounded-full">
+          <Bell className="w-7 h-7 bg-green-600 shadow-md rounded-full text-white" />
+          <span className="absolute top-0 right-0 inline-flex items-center justify-center w-3 h-3  rounded-full">
             <span className="sr-only">Notifications</span>
           </span>
         </div>
