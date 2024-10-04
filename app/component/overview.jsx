@@ -49,70 +49,75 @@ export default function Overview() {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-white rounded-lg  3xl:w-[85%]  w-[85%] mt-10 shadow">
+    <div className="container mx-auto p-4 bg-white rounded-xl shadow-lg  w-full max-w-7xl mt-10">
       <div className="overflow-x-auto">
-        {loading &&  
-<div class="flex flex-row gap-2">
-  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
-  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
-  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
-</div>}
-        {/* {error && <div>{error}</div>} */}
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Order ID</TableHead>
-              <TableHead>Date</TableHead>
-              {/* <TableHead>Store Name</TableHead> */}
-              <TableHead>Shipping Cost</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {orders && orders.length > 1 ? (
-              orders.map((order) => (
-                <TableRow key={order.id}>
-                  <TableCell className="">{order.id}</TableCell>
-                  <TableCell>{order.created_at}</TableCell>
-                  {/* <TableCell>{order.store_name}</TableCell> */}
-                  <TableCell>{order.shipping_cost}</TableCell>
-                  <TableCell>{order.order_status}</TableCell>
-                  <TableCell className="text-right">
-                    <Button variant="ghost" size="icon">
-                      <Edit2 className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
+        {loading && (
+          <div className="flex justify-center items-center h-20">
+            <div className="flex space-x-2">
+              <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+              <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+              <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+            </div>
+          </div>
+        )}
+        
+        <div className="min-h-[300px] md:min-h-[300px] lg:min-h-[400px]">
+          <Table>
+            <TableHeader>
               <TableRow>
-                <TableCell colSpan="6">No orders found</TableCell>
+                <TableHead className="w-1/5">Order ID</TableHead>
+                <TableHead className="w-1/5">Date</TableHead>
+                <TableHead className="w-1/5">Shipping Cost</TableHead>
+                <TableHead className="w-1/5">Status</TableHead>
+                <TableHead className="w-1/5 text-right">Actions</TableHead>
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
-        <div className="flex justify-between mt-4">
-          <button
+            </TableHeader>
+            <TableBody>
+              {orders && orders.length > 1 ? (
+                orders.map((order) => (
+                  <TableRow key={order.id}>
+                    <TableCell className="text-sm font-extralight">{order.order_number}</TableCell>
+                    <TableCell className="text-sm">{order.created_at}</TableCell>
+                    <TableCell className="text-sm">{order.shipping_cost}</TableCell>
+                    <TableCell className="text-sm">{order.order_status}</TableCell>
+                    <TableCell className="text-right">
+                      <Button variant="ghost" size="sm" className="mr-2">
+                        <Edit2 className="h-4 w-4" />
+                        <span className="sr-only">Edit</span>
+                      </Button>
+                      <Button variant="ghost" size="sm">
+                        <Trash2 className="h-4 w-4" />
+                        <span className="sr-only">Delete</span>
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center py-10">No orders found</TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-4 sm:space-y-0">
+          <Button
             onClick={handlePreviousPage}
             disabled={currentPage === 1}
-            className="bg-[#33dd] hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
           >
             Previous
-          </button>
-          <span>
+          </Button>
+          <span className="text-sm">
             Page {currentPage} of {totalPages}
           </span>
-          <button
+          <Button
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
-            className="bg-[#33dd]  hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
           >
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </div>
