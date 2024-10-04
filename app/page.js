@@ -23,6 +23,7 @@ export default function Home() {
                 <Overview />
               </div>
               <div className="bg-gray-100">
+              
                 <InventoryOverview />
                 <Tickets />
               </div>
