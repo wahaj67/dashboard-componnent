@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import { Bell, Search } from 'lucide-react'
+import Image from "next/image";
+import { Bell, Search } from "lucide-react";
 
 export default function NavbarComponent() {
   return (
@@ -36,5 +36,5 @@ export default function NavbarComponent() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

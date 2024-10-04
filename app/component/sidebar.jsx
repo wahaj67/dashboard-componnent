@@ -1,37 +1,47 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
-import { LayoutDashboard, Package, ShoppingCart, Ticket, Users, ChevronDown, ChevronUp, Menu, X } from 'lucide-react'
-import Link from 'next/link'
-import Image from 'next/image'
+import React, { useState } from "react";
+import {
+  LayoutDashboard,
+  Package,
+  ShoppingCart,
+  Ticket,
+  Users,
+  ChevronDown,
+  ChevronUp,
+  Menu,
+  X,
+} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
-  { icon: Package, label: 'Inventory', href: '/inventory' },
+  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
+  { icon: Package, label: "Inventory", href: "/inventory" },
   {
     icon: ShoppingCart,
-    label: 'Order',
-    href: '/order',
+    label: "Order",
+    href: "/order",
     subItems: [
-      { label: 'New Order', href: '/order/new' },
-      { label: 'Order History', href: '/order/history' },
+      { label: "New Order", href: "/order/new" },
+      { label: "Order History", href: "/order/history" },
     ],
   },
-  { icon: Ticket, label: 'Tickets', href: '/tickets' },
-  { icon: Users, label: 'Employees', href: '/employees' },
-]
+  { icon: Ticket, label: "Tickets", href: "/tickets" },
+  { icon: Users, label: "Employees", href: "/employees" },
+];
 
 export default function SideBar() {
-  const [expandedItem, setExpandedItem] = useState(null)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [expandedItem, setExpandedItem] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleExpand = (label) => {
-    setExpandedItem(expandedItem === label ? null : label)
-  }
+    setExpandedItem(expandedItem === label ? null : label);
+  };
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen)
-  }
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <>
@@ -40,12 +50,16 @@ export default function SideBar() {
         className="fixed  left-2 z-50 p-2 bg-white rounded-md mt-2  h-10 w-10 lg:hidden"
         aria-label="Toggle Sidebar"
       >
-        {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {isSidebarOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <Menu className="w-6 h-6" />
+        )}
       </button>
 
       <div
         className={`fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:static lg:inset-auto`}
       >
         <div className="flex flex-col min-h-screen">
@@ -111,5 +125,5 @@ export default function SideBar() {
         ></div>
       )}
     </>
-  )
+  );
 }

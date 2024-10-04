@@ -57,20 +57,22 @@ export default function OrderOverview() {
             }`}
           >
             <div className="flex justify-between items-start mb-2">
-              <h3 className="text-lg font-semibold">
-                {order.title}
-              </h3>
-              <Info className={`w-5 h-5 ${
-                selectedCard === order.status ? "text-white" : "text-gray-400"
-              }`} />
+              <h3 className="text-lg font-semibold">{order.title}</h3>
+              <Info
+                className={`w-5 h-5 ${
+                  selectedCard === order.status ? "text-white" : "text-gray-400"
+                }`}
+              />
             </div>
             <p className="text-3xl font-bold mb-1">
               {order.value}
               <span className="text-xs font-normal mr-2">{order.unit}</span>
             </p>
-            <p className={`text-sm ${
-              selectedCard === order.status ? "text-white" : "text-gray-500"
-            }`}>
+            <p
+              className={`text-sm ${
+                selectedCard === order.status ? "text-white" : "text-gray-500"
+              }`}
+            >
               {order.description}
             </p>
           </div>

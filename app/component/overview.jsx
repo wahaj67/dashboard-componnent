@@ -60,7 +60,7 @@ export default function Overview() {
             </div>
           </div>
         )}
-        
+
         <div className="min-h-[300px] md:min-h-[300px] lg:min-h-[400px]">
           <Table>
             <TableHeader>
@@ -69,19 +69,27 @@ export default function Overview() {
                 <TableHead className="w-1/5">Date</TableHead>
                 <TableHead className="w-1/5">Shipping Cost</TableHead>
                 <TableHead className="w-1/5">Status</TableHead>
-                <TableHead className="w-1/5 text-right">Actions</TableHead>
+                <TableHead className="w-1/5 ">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {orders && orders.length > 1 ? (
                 orders.map((order) => (
                   <TableRow key={order.id}>
-                    <TableCell className="text-sm font-extralight">{order.order_number}</TableCell>
-                    <TableCell className="text-sm">{order.created_at}</TableCell>
-                    <TableCell className="text-sm">{order.shipping_cost}</TableCell>
-                    <TableCell className="text-sm">{order.order_status}</TableCell>
+                    <TableCell className="text-sm font-extralight">
+                      {order.order_number}
+                    </TableCell>
+                    <TableCell className="text-sm">
+                      {order.created_at}
+                    </TableCell>
+                    <TableCell className="text-sm ">
+                      {order.shipping_cost}
+                    </TableCell>
+                    <TableCell className="text-sm">
+                      {order.order_status}
+                    </TableCell>
                     <TableCell className="text-right">
-                      <Button variant="ghost" size="sm" className="mr-2">
+                      <Button variant="ghost" size="sm" className="">
                         <Edit2 className="h-4 w-4" />
                         <span className="sr-only">Edit</span>
                       </Button>
@@ -94,7 +102,9 @@ export default function Overview() {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center py-10">No orders found</TableCell>
+                  <TableCell colSpan={5} className="text-center py-10">
+                    No orders found
+                  </TableCell>
                 </TableRow>
               )}
             </TableBody>
