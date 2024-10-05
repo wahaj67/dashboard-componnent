@@ -18,7 +18,7 @@ const inventoryItems = [
 
 export default function InventoryOverview() {
   return (
-    <div className="w-78  p-4">
+    <div className="w-78 h-78 p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">
@@ -40,15 +40,15 @@ export default function InventoryOverview() {
                     <h3 className="text-lg font-medium text-gray-900">
                       {item.title}
                     </h3>
-                    <span className="text-lg font-semibold text-gray-900">
+                    <span className="text-lg font-semibold text-[#13834B]">
                       {item.items.toString().padStart(2, "0")} Items
                     </span>
                   </div>
-                  <div className="mt-1 flex justify-between items-center">
-                    <div className="text-sm text-gray-500">
+                  <div className="mt-2 flex justify-between items-center">
+                    <div className="text-xs text-gray-500 ">
                       All stock items that are {item.title.toLowerCase()}
                     </div>
-                    <span className="text-sm text-red-500 flex items-center">
+                    <span className="text-sm text-red-500 flex items-center mt-4">
                       {item.percentage.toFixed(2)}%
                     </span>
                   </div>

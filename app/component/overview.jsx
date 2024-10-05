@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
-import { Edit2, Search, SearchCheckIcon, SearchCode, Trash2 } from "lucide-react";
-import { Button, Input } from "@/components/ui/button";
+import {
+  ChevronDown,
+  Download,
+  Edit2,
+  Search,
+  Settings,
+  Trash2,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -12,13 +19,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { fetching, setCurrentPage } from "@/redux/slice";
 
-
 export default function Overview() {
   const dispatch = useDispatch();
   const {
     userData: orders,
     loading,
-    error,
     currentPage,
     totalOrders,
     ordersPerPage,
@@ -50,91 +55,147 @@ export default function Overview() {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-white rounded-xl shadow-lg  w-full max-w-7xl mt-10">
+    <div className="container p-4 sm:p-6 bg-white rounded-xl shadow-sm w-full xl:max-w-full mt-4 sm:mt-10">
+      <div className="flex flex-col space-y-4 mb-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+          <h1 className="text-md  font-bold">Order Overview</h1>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-gray-500">By Store name</span>
+              <ChevronDown className="h-4 w-4 text-gray-500" />
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-gray-500">Compare to</span>
+              <input
+                type="date"
+                className="text-sm text-gray-500 border rounded px-2 py-1"
+              />
+            </div>
+            <Button
+              variant="outline"
+              className="bg-[#13834B] text-white hover:bg-green-700 w-full sm:w-auto"
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Export CSV
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row justify-end items-center space-y-2 sm:space-y-0 sm:space-x-2">
+          <div className="relative w-full sm:w-64">
+            <input
+              type="search"
+              placeholder="Order ID / Name"
+              className="pl-10 pr-4 py-2 border rounded-lg shadow-sm w-full"
+            />
+            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+          </div>
+          <Button className="bg-[#13834B] text-white hover:bg-green-700 w-full sm:w-auto">
+            Search
+          </Button>
+        </div>
+      </div>
       <div className="overflow-x-auto">
-        {loading && (
+        {loading ? (
           <div className="flex justify-center items-center h-20">
             <div className="flex space-x-2">
-              <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
-              <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
-              <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+              <div className="w-4 h-4 rounded-full bg-[#13834B] animate-bounce [animation-delay:.7s]"></div>
+              <div className="w-4 h-4 rounded-full bg-[#13834B] animate-bounce [animation-delay:.3s]"></div>
+              <div className="w-4 h-4 rounded-full bg-[#13834B] animate-bounce [animation-delay:.7s]"></div>
             </div>
           </div>
-        )}
-
-        <div className="min-h-[300px] md:min-h-[300px] lg:min-h-[400px]">
-          <div>
-          <h1 className="text-2xl sm:text-xl font-bold mt-2 ">Order Overview </h1>
-          
-          
-          </div>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-1/5">Order ID</TableHead>
-                <TableHead className="w-1/5">Date</TableHead>
-                <TableHead className="w-1/5">Shipping Cost</TableHead>
-                <TableHead className="w-1/5">Status</TableHead>
-                <TableHead className="w-1/5 ">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {orders && orders.length > 1 ? (
-                orders.map((order) => (
-                  <TableRow key={order.id}>
-                    <TableCell className="text-sm font-extralight">
-                      {order.order_number}
-                    </TableCell>
-                    <TableCell className="text-sm">
-                      {order.created_at}
-                    </TableCell>
-                    <TableCell className="text-sm ">
-                      {order.shipping_cost}
-                    </TableCell>
-                    <TableCell className="text-sm ">
-                      {order.order_status}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Button variant="ghost" size="sm" className="">
-                        <Edit2 className="h-4 w-4" />
-                        <span className="sr-only">Edit</span>
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <Trash2 className="h-4 w-4" />
-                        <span className="sr-only">Delete</span>
-                      </Button>
+        ) : (
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="px-2 sm:px-4">Order ID</TableHead>
+                  <TableHead className="px-2 sm:px-4">Date</TableHead>
+                  <TableHead className="px-2 sm:px-4">Store Name</TableHead>
+                  <TableHead className="px-2 sm:px-4">Region</TableHead>
+                  <TableHead className="px-2 sm:px-4">Status</TableHead>
+                  <TableHead className="px-2 sm:px-4 text-right">
+                    <Settings className="h-5 w-5 text-gray-500 inline-block" />
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {orders && orders.length > 0 ? (
+                  orders.map((order) => (
+                    <TableRow key={order.id}>
+                      <TableCell className="px-2 sm:px-4 font-medium">
+                        {order.order_number}
+                      </TableCell>
+                      <TableCell className="px-2 sm:px-4">
+                        {order.created_at}
+                      </TableCell>
+                      <TableCell className="px-2 sm:px-4">
+                        {order.store_name || "Jackson Place"}
+                      </TableCell>
+                      <TableCell className="px-2 sm:px-4">
+                        {order.region || "North America"}
+                      </TableCell>
+                      <TableCell className="px-2 sm:px-4">
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-semibold
+                          ${
+                            order.order_status === "Packed"
+                              ? "bg-blue-100 text-blue-800"
+                              : order.order_status === "New Order"
+                              ? "bg-green-100 text-green-800"
+                              : "bg-yellow-100 text-yellow-800"
+                          }`}
+                        >
+                          {order.order_status}
+                        </span>
+                      </TableCell>
+                      <TableCell className="px-2 sm:px-4 text-right">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                        >
+                          <Edit2 className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={6} className="text-center py-10">
+                      No orders found
                     </TableCell>
                   </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell colSpan={5} className="text-center py-10">
-                    No orders found
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </div>
-        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-4 sm:space-y-0">
-          <Button
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
-          >
-            Previous
-          </Button>
-          <span className="text-sm">
-            Page {currentPage} of {totalPages}
-          </span>
-          <Button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
-          >
-            Next
-          </Button>
-        </div>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        )}
+      </div>
+      <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-2 sm:space-y-0">
+        <Button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50 w-full sm:w-auto"
+        >
+          Previous
+        </Button>
+        <span className="text-sm">
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50 w-full sm:w-auto"
+        >
+          Next
+        </Button>
       </div>
     </div>
   );

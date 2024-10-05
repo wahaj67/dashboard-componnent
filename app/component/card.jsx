@@ -52,7 +52,7 @@ export default function OrderOverview() {
             onClick={() => handleClick(order.status)}
             className={`rounded-lg p-4 cursor-pointer transition-all ${
               selectedCard === order.status
-                ? "bg-green-600 text-white"
+                ? "bg-[#13834B] text-white"
                 : "bg-white border border-gray-200"
             }`}
           >

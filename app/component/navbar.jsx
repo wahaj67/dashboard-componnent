@@ -4,9 +4,9 @@ import { Bell, Search } from "lucide-react";
 export default function NavbarComponent() {
   return (
     <nav className="w-full flex items-center overflow-x-hidden justify-between p-4 bg-white">
-      <div className="relative flex-grow max-w-xl">
+      <div className="relative flex-grow max-w-sm">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <Search className="w-5 h-5 text-gray-400" />
+          <Search className="w-3 h-5 text-gray-400" />
         </div>
         <input
           type="search"
@@ -17,7 +17,7 @@ export default function NavbarComponent() {
       </div>
       <div className="flex items-center space-x-4 ml-4">
         <div className="relative">
-          <Image src='/Group 279.png' alt="bell" width={39} height={39}/>
+          <Image src="/Group 279.png" alt="bell" width={39} height={39} />
           <span className="absolute top-0 right-0 inline-flex items-center justify-center w-3 h-3  rounded-full">
             <span className="sr-only">Notifications</span>
           </span>
@@ -32,7 +32,9 @@ export default function NavbarComponent() {
           />
           <span className="text-sm font-Poppins font-medium text-gray-700 hidden sm:inline-block">
             Rayford Chenail
-            <p className="text-xs  text-gray-500 font-extralight">rayfordchenail@mail.com</p>
+            <p className="text-xs  text-gray-500 font-extralight">
+              rayfordchenail@mail.com
+            </p>
           </span>
         </div>
       </div>
