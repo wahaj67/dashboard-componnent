@@ -43,16 +43,16 @@ export default function OrderOverview() {
   ];
 
   return (
-    <div className="bg-white rounded-lg p-6 shadow-md w-full ">
+    <div className="bg-white rounded-lg p-6 shadow-md w-full dark:bg-background">
       <h2 className="text-xl font-semibold mb-4">Overview</h2>
-      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
         {orders.map((order) => (
           <div
             key={order.status}
             onClick={() => handleClick(order.status)}
-            className={`rounded-lg p-4 cursor-pointer transition-all ${
+            className={`rounded-lg p-4 cursor-pointer transition-all  dark:dark:bg-background ${
               selectedCard === order.status
-                ? "bg-[#13834B] text-white"
+                ? "bg-[#13834B] dark:bg-[#13834B] text-white"
                 : "bg-white border border-gray-200"
             }`}
           >

@@ -47,7 +47,7 @@ export default function SideBar() {
     <>
       <button
         onClick={toggleSidebar}
-        className="fixed  left-2 z-50 p-2 bg-white rounded-md mt-2  h-10 w-10 lg:hidden"
+        className="fixed  left-2 z-50 p-2 bg-white dark:bg-background rounded-md mt-2  h-10 w-10 lg:hidden"
         aria-label="Toggle Sidebar"
       >
         {isSidebarOpen ? (
@@ -58,12 +58,12 @@ export default function SideBar() {
       </button>
 
       <div
-        className={`fixed inset-y-0 left-0 z-40 w-52 bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${
+        className={`fixed inset-y-0 left-0 z-40 w-52 bg-white dark:bg-background shadow-lg transition-transform duration-300 ease-in-out transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:static lg:inset-auto`}
       >
         <div className="flex flex-col min-h-screen">
-          <div className="p-4 border-b border-gray-200 bg-gray-50 shadow-lg mt-2 hover:scale-105">
+          <div className="p-4 border-b border-gray-200 bg-gray-50 dark:bg-background shadow-lg mt-2 hover:scale-105">
             <Image src="/logo animate.png" alt="Logo" width={178} height={38} />
           </div>
           <nav className="flex-1 overflow-y-auto">
@@ -74,7 +74,7 @@ export default function SideBar() {
                     <div>
                       <button
                         onClick={() => toggleExpand(item.label)}
-                        className="flex items-center w-full text-gray-700 hover:text-green-600 transition-colors duration-200"
+                        className="flex items-center w-full text-gray-700 dark:text-white dark:hover:text-green-600 hover:text-green-600 transition-colors duration-200"
                       >
                         <item.icon className="w-5 h-5 mr-3" />
                         {item.label}
@@ -85,12 +85,12 @@ export default function SideBar() {
                         )}
                       </button>
                       {expandedItem === item.label && (
-                        <ul className="ml-6 mt-2">
+                        <ul className="ml-6 mt-2 dark:text-white">
                           {item.subItems.map((subItem) => (
-                            <li key={subItem.label} className="py-1">
+                            <li key={subItem.label} className="py-1  ">
                               <Link
                                 href={subItem.href}
-                                className="text-gray-600 hover:text-green-600 transition-colors duration-200"
+                                className="text-gray-600 hover:text-green-600 dark:hover:text-green-600 dark:text-white transition-colors duration-200"
                                 onClick={() => setIsSidebarOpen(false)}
                               >
                                 {subItem.label}
@@ -103,10 +103,10 @@ export default function SideBar() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="flex items-center text-gray-700 hover:text-green-600 transition-colors duration-200"
+                      className="flex items-center text-gray-700 dark:text-white hover:text-green-600 dark:hover:text-green-600 transition-colors duration-200"
                       onClick={() => setIsSidebarOpen(false)}
                     >
-                      <item.icon className="w-5 h-5 mr-3" />
+                      <item.icon className="w-5 h-5 mr-3 dark:text-white "  />
                       {item.label}
                     </Link>
                   )}

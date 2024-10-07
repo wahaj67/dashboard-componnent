@@ -55,25 +55,25 @@ export default function Overview() {
   };
 
   return (
-    <div className="container p-4 sm:p-6 bg-white rounded-xl shadow-sm w-full xl:max-w-full mt-4 sm:mt-10">
+    <div className="container p-4 sm:p-6 bg-white dark:bg-background rounded-xl shadow-sm w-full xl:max-w-full mt-4 sm:mt-10">
       <div className="flex flex-col space-y-4 mb-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
           <h1 className="text-md  font-bold">Order Overview</h1>
           <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-500">By Store name</span>
-              <ChevronDown className="h-4 w-4 text-gray-500" />
+              <span className="text-sm text-gray-500 dark:text-white">By Store name</span>
+              <ChevronDown className="h-4 w-4 text-gray-500 dark:text-white" />
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-500">Compare to</span>
+              <span className="text-sm text-gray-500 dark:text-white">Compare to</span>
               <input
                 type="date"
-                className="text-sm text-gray-500 border rounded px-2 py-1"
+                className="text-sm text-gray-500 dark:text-white border rounded px-2 py-1"
               />
             </div>
             <Button
               variant="outline"
-              className="bg-[#13834B] text-white hover:bg-green-700 w-full sm:w-auto"
+              className="bg-[#13834B] dark:bg-white dark:text-black text-white hover:bg-green-700 w-full sm:w-auto"
             >
               <Download className="h-4 w-4 mr-2" />
               Export CSV
@@ -81,15 +81,15 @@ export default function Overview() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-end items-center space-y-2 sm:space-y-0 sm:space-x-2">
-          <div className="relative w-full sm:w-64">
+          <div className="relative  w-full sm:w-64">
             <input
               type="search"
               placeholder="Order ID / Name"
-              className="pl-10 pr-4 py-2 border rounded-lg shadow-sm w-full"
+              className="pl-14 pr-4 py-2 border dark:text-white  rounded-lg shadow-sm w-52"
             />
-            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+            <Search className="absolute left-3 top-2.5 h-5 w-5 dark:text-white text-gray-400" />
           </div>
-          <Button className="bg-[#13834B] text-white hover:bg-green-700 w-full sm:w-auto">
+          <Button className="bg-[#13834B] text-white dark:text-black dark:bg-white hover:bg-green-700 w-full sm:w-auto">
             Search
           </Button>
         </div>
@@ -108,13 +108,13 @@ export default function Overview() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="px-2 sm:px-4">Order ID</TableHead>
-                  <TableHead className="px-2 sm:px-4">Date</TableHead>
-                  <TableHead className="px-2 sm:px-4">Store Name</TableHead>
-                  <TableHead className="px-2 sm:px-4">Region</TableHead>
-                  <TableHead className="px-2 sm:px-4">Status</TableHead>
+                  <TableHead className="px-2 sm:px-4 dark:text-white">Order ID</TableHead>
+                  <TableHead className="px-2 sm:px-4 dark:text-white">Date</TableHead>
+                  <TableHead className="px-2 sm:px-4 dark:text-white">Store Name</TableHead>
+                  <TableHead className="px-2 sm:px-4 dark:text-white">Region</TableHead>
+                  <TableHead className="px-2 sm:px-4 dark:text-white">Status</TableHead>
                   <TableHead className="px-2 sm:px-4 text-right">
-                    <Settings className="h-5 w-5 text-gray-500 inline-block" />
+                    <Settings className="h-5 w-5 text-gray-500 dark:text-white inline-block" />
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -142,7 +142,7 @@ export default function Overview() {
                               ? "bg-blue-100 text-blue-800"
                               : order.order_status === "New Order"
                               ? "bg-green-100 text-green-800"
-                              : "bg-yellow-100 text-yellow-800"
+                              : "bg-yellow-100 dark:bg-white text-yellow-800 dark:text-yellow-800"
                           }`}
                         >
                           {order.order_status}
@@ -168,7 +168,7 @@ export default function Overview() {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={6} className="text-center py-10">
+                    <TableCell colSpan={6} className="text-center py-10 dark:text-white">
                       No orders found
                     </TableCell>
                   </TableRow>
@@ -182,7 +182,7 @@ export default function Overview() {
         <Button
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50 w-full sm:w-auto"
+          className="bg-blue-600 dark:text-black dark:bg-white hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50 w-full sm:w-auto"
         >
           Previous
         </Button>
@@ -192,7 +192,7 @@ export default function Overview() {
         <Button
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50 w-full sm:w-auto"
+          className="bg-blue-600 hover:bg-blue-700 dark:text-black dark:bg-white text-white px-4 py-2 rounded-lg disabled:opacity-50 w-full sm:w-auto"
         >
           Next
         </Button>

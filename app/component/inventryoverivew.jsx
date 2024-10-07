@@ -19,9 +19,9 @@ const inventoryItems = [
 export default function InventoryOverview() {
   return (
     <div className="w-78 h-78 p-4">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-background rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
             Inventory Overview
           </h2>
           <div className="space-y-6">
@@ -45,7 +45,7 @@ export default function InventoryOverview() {
                     </span>
                   </div>
                   <div className="mt-2 flex justify-between items-center">
-                    <div className="text-xs text-gray-500 ">
+                    <div className="text-xs text-gray-500 dark:text-white ">
                       All stock items that are {item.title.toLowerCase()}
                     </div>
                     <span className="text-sm text-red-500 flex items-center mt-4">
