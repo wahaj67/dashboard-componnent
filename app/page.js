@@ -14,18 +14,18 @@ export default function Home() {
   return (
     <Provider store={store}>
       <ThemeProvider attribute="class" defaultTheme="light">
-        <div className="flex flex-row w-full">
+        <div className="flex flex-row w-full dark:bg-gray-900">
           <div>
             <SideBar />
           </div>
           <div className="flex flex-col w-full">
             <NavbarComponent />
             <div className="flex lg:flex-row flex-col ml-4">
-              <div className="flex-1 p-6 bg-background rounded-lg">
+              <div className="flex-1 p-6 dark:bg-gray-900 rounded-lg">
                 <OrderOverview />
                 <Overview />
               </div>
-              <div className="bg-background">
+              <div className="dark:bg-gray-900">
                 <InventoryOverview />
                 <Tickets />
               </div>

@@ -9,14 +9,14 @@ export default function NavbarComponent() {
   const { theme, setTheme } = useTheme()
 
   return (
-    <nav className="w-full flex items-center overflow-x-hidden justify-between p-4 bg-background">
+    <nav className="w-full flex items-center overflow-x-hidden justify-between p-4 dark:bg-gray-900">
       <div className="relative flex-grow max-w-sm">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <Search className="w-3 h-5 text-muted-foreground" />
         </div>
         <input
           type="search"
-          className="w-full p-2 pl-10 dark:text-white text-sm text-foreground border border-input rounded-lg bg-background focus:ring-primary focus:border-primary"
+          className="w-full p-2 pl-10 dark:text-white text-sm text-foreground border border-input rounded-lg dark:bg-gray-900 focus:ring-primary focus:border-primary"
           placeholder="Search for news and funds..."
           required
         />

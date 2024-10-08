@@ -47,7 +47,7 @@ export default function SideBar() {
     <>
       <button
         onClick={toggleSidebar}
-        className="fixed  left-2 z-50 p-2 bg-white dark:bg-background rounded-md mt-2  h-10 w-10 lg:hidden"
+        className="fixed  left-2 z-50 p-2 bg-white dark:bg-gray-900 rounded-md mt-2  h-10 w-10 lg:hidden"
         aria-label="Toggle Sidebar"
       >
         {isSidebarOpen ? (
@@ -58,18 +58,18 @@ export default function SideBar() {
       </button>
 
       <div
-        className={`fixed inset-y-0 left-0 z-40 w-52 bg-white dark:bg-background shadow-lg transition-transform duration-300 ease-in-out transform ${
+        className={`fixed inset-y-0 left-0 z-40 w-52 bg-white dark:bg-gray-900 shadow-lg transition-transform duration-300 ease-in-out transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:static lg:inset-auto`}
       >
         <div className="flex flex-col min-h-screen">
-          <div className="p-4 border-b border-gray-200 bg-gray-50 dark:bg-background shadow-lg mt-2 hover:scale-105">
+          <div className="p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-900 shadow-lg mt-2 hover:scale-105">
             <Image src="/logo animate.png" alt="Logo" width={178} height={38} />
           </div>
           <nav className="flex-1 overflow-y-auto">
             <ul className="py-4">
               {menuItems.map((item) => (
-                <li key={item.label} className="px-4 py-4 shadow-lg mt-10 ">
+                <li key={item.label} className="px-4 py-4 hover:shadow-md dark:hover:shadow-white mt-10 ">
                   {item.subItems ? (
                     <div>
                       <button
@@ -119,7 +119,7 @@ export default function SideBar() {
 
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          className="fixed inset-0 bg-black dark:bg-gray-900 bg-opacity-50 z-30 lg:hidden"
           onClick={toggleSidebar}
           aria-hidden="true"
         ></div>

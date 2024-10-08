@@ -19,7 +19,7 @@ const inventoryItems = [
 export default function InventoryOverview() {
   return (
     <div className="w-78 h-78 p-4">
-      <div className="bg-white dark:bg-background rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
             Inventory Overview

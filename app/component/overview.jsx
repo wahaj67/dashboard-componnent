@@ -55,7 +55,7 @@ export default function Overview() {
   };
 
   return (
-    <div className="container p-4 sm:p-6 bg-white dark:bg-background rounded-xl shadow-sm w-full xl:max-w-full mt-4 sm:mt-10">
+    <div className="container p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-sm w-full xl:max-w-full mt-4 sm:mt-10">
       <div className="flex flex-col space-y-4 mb-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
           <h1 className="text-md  font-bold">Order Overview</h1>
